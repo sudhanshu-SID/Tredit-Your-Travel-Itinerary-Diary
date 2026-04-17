@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tredit - Your Complete Travel Itinerary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f8f9fa",
+                        "outline": "#737785",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f4f5",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "outline-variant": "#c3c6d6",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#7a3000",
+                        "on-secondary-container": "#562000",
+                        "on-primary-container": "#ccd8ff",
+                        "on-primary-fixed": "#001847",
+                        "on-surface": "#191c1d",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#ffdbcb",
+                        "on-background": "#191c1d",
+                        "on-secondary-fixed": "#341100",
+                        "surface-container": "#edeeef",
+                        "tertiary-container": "#6e25f6",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#0056d2",
+                        "secondary-container": "#fd6c00",
+                        "on-surface-variant": "#424654",
+                        "inverse-primary": "#b2c5ff",
+                        "secondary-fixed-dim": "#ffb692",
+                        "surface-bright": "#f8f9fa",
+                        "on-tertiary-fixed": "#22005d",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#e0d2ff",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dae2ff",
+                        "primary": "#0040a1",
+                        "on-primary-fixed-variant": "#0040a1",
+                        "tertiary": "#5400cc",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary": "#9f4200",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#cfbcff",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-fixed": "#e9ddff",
+                        "surface-tint": "#0056d2",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-tertiary-fixed-variant": "#5400cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(248,249,250,0) 0%, rgba(248,249,250,1) 90%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-xl flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="travel_explore">travel_explore</span>
+<span class="text-2xl font-extrabold tracking-tighter text-on-surface">Tredit</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pb-32">
+<!-- Variation 1: Immersive Full-Bleed Hero -->
+<section class="relative h-[90vh] flex flex-col justify-end overflow-hidden">
+<div class="absolute inset-0 -z-10">
+<img alt="" class="w-full h-full object-cover scale-105" data-alt="Immersive landscape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn8UNJq9OZuL9V9subtlFmEq1g9_mNQzb9X-2r9EICjNX2Pv2-e46VmIokW9D9NPmdIl5CfOwyegrlp83Me-Fo87Unuy9HsAdN9lJZ3F1bHIrhKJ1Uw4AKzccl08PnB61glwgesm5SCTiD-KGerN2kBKPZNmQFbSl48niZ8Sa-II_KMqQJEsLgEeP4zjA8v10-lw4OzZznAFTCsnmHEkccyAz1qH-0vWdEiFo_QArpmSk_Zg7SrgxuDw_gNKQUBz5Jsp0oIWrloJ8"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="px-6 pb-12 w-full max-w-xl">
+<h1 class="font-headline text-5xl font-extrabold tracking-tight text-on-surface mb-4 leading-[1.1]">
+                Every Journey <br/>
+<span class="text-primary">Starts with a Story</span>
+</h1>
+<p class="text-on-surface-variant font-medium mb-8 leading-relaxed opacity-90">
+                Craft the perfect itinerary with our community of world travelers and local experts.
+            </p>
+<!-- Prominent Search Interaction -->
+<div class="bg-white rounded-2xl p-2 shadow-2xl shadow-primary/10 border border-outline-variant/10 flex items-center gap-2">
+<div class="flex-grow flex items-center gap-3 px-4">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface font-medium placeholder:text-outline/40" placeholder="Discover your next adventure..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold transition-transform active:scale-95 whitespace-nowrap">Plan Trip</button>
+</div>
+</div>
+</section>
+<!-- Variation 2: Grid-Based Destinations -->
+<section class="px-6 py-12 max-w-6xl mx-auto">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight">Trending Destinations</h2>
+<p class="text-on-surface-variant text-sm font-medium">Curated by our top 1% of contributors</p>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">See all</button>
+</div>
+<!-- Bento-style Grid Layout -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Large Card -->
+<div class="col-span-2 relative h-72 rounded-3xl overflow-hidden group">
+<img alt="Tokyo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Tokyo skyline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXCj2OI8cGu_HBb1AgubkGKxGjcW7VYbWOFca6HAzGzMuKc4zzSadCdm7sSZs6hGCDZvcZrQit5isfq1uOqoN36swC3_H4RZolXrssfDwNzdMSmx_0fb_iBpkUOzTqnEVtiiEmcAi-lKrfCoKW3ybVFPdU5thhUt54sktUNHCHC61iYjrWWT4lpKlY3FN_AcRPigl-ikJ-7mo6gPE_fFrkK2nhZ2I7LIsM03Os3LjwKfVzTlJ18S7a9n5ehsqXPFGOrfEdtZGBpJc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<span class="bg-tertiary text-on-tertiary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-2 inline-block">Urban Jungle</span>
+<h3 class="text-white font-headline text-2xl font-bold">Tokyo, Japan</h3>
+<p class="text-white/70 text-sm mt-1">4.2k active itineraries</p>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="relative h-64 rounded-3xl overflow-hidden group">
+<img alt="Manali" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Manali peaks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaE3j9JPwaNwK9dSD7X9sxJ2MFEKpG-woYcHMwolIheFjNf2fC0LNXiupWbsGYDsk8E7A8TAcgwrM4zx612Pme7QrKRje1-BrwERJm73G-kPXrJb4yXaG86MT_KqsKOROLj6wrQF_s4mVOAcDqgyv7ZMvMqYNPmxfr0S1j6bw_VRVMJEhKXGnwjriDkbpEgKRye3_6kYWXUIP9M_NDAJND6TkZIvgIXXeY4UL-zweT-zxxCXnl3LunqZfhh4PQTJkNFrQbYeWOZT4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5">
+<h4 class="text-white font-headline text-lg font-bold">Manali</h4>
+<div class="flex items-center gap-1 text-white/80 text-xs">
+<span class="material-symbols-outlined text-[14px] fill-current" data-icon="star">star</span>
+<span>4.9</span>
+</div>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="relative h-64 rounded-3xl overflow-hidden group">
+<img alt="Bali" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Bali terraces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD43SuW2SsuKOBKTBzeNMROOZocvSiP1wjTgG6hn-bOszguqUkG3jlF-xMhTBmoyDHLy_cxviOqaHECSpgwiDSN49u11UKekbztj_8BNmzQbXIWcAAJL2hMw7S_gNx8Eu1VJFsPNbS3a75NPa_hwA9pxvvbZR8BJJt1iqB4gYsP-8cOZzg7Z0yLok6YSyiRYIB5pkJOcO5xOD2YTTDb6c-ao44pWEh6RkELAgQMG8dAo5u91Ewo2X9s_oe_JSVDz0HEoqQ-_GEKumU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5">
+<h4 class="text-white font-headline text-lg font-bold">Bali</h4>
+<div class="flex items-center gap-1 text-white/80 text-xs">
+<span class="material-symbols-outlined text-[14px] fill-current" data-icon="star">star</span>
+<span>4.8</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Variation 3: Structured Modern Recent Activity -->
+<section class="px-6 mb-20 max-w-6xl mx-auto">
+<div class="bg-surface-container rounded-[2.5rem] p-8">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-2xl font-extrabold text-on-surface">Recent Community Trips</h2>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Activity Item 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex gap-5 items-center hover:scale-[1.02] transition-all">
+<div class="w-20 h-20 rounded-xl overflow-hidden shadow-sm">
+<img alt="Swiss Alps" class="w-full h-full object-cover" data-alt="Swiss lake" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaERRZ_CYL2bhWtCja955wDvoZ3InR_-Gpf3AG6G5D3lKf8XKdb_azSzv3tr7LXebkiDbY4Bhbappgtv3BXiT3dXh2QBBeI_ls6AaOgu68Qd7-OSWSLj0T3hgn9OFeXUC0V34orpa7jjd9A9kgFbiG_HwLef4CZ48qhXFM6BuG4QqHLHT-O5KQ8RUqQZcQ8Wrri0EBpliqVOL_zKgNg_swCFNP6RT-MVkFE6tVySHBz2PZWgo6unz9ktLFF6XtoK7oqqFR1wux8NI"/>
+</div>
+<div class="flex-grow">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest mb-1 block">Adventure</span>
+<h4 class="font-bold text-on-surface text-lg">7 Days in Swiss Alps</h4>
+<div class="flex items-center gap-2 mt-2">
+<img alt="Avatar" class="w-6 h-6 rounded-full object-cover" data-alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaROtfXfMJ6BP0f-Ym-TnypdQYO2zvX-l4RHTqYI2lBVNHunXyq7b-7f0lL8WzwL6Lorooqc_z8RtZm6pJ5300Kl08wY_OGjK76VM0y4GKB_k9mdeEn4-ZkwU7QGb1vEkJG9oiuKhPVExflGer9qmW2gXfNaJQ8EQ_80gvj7pm2Are50CviMnne1rqFHoLX9SvGpGa9guKjIfVzu_XamFq9XZ5X33XB-1YcjbjgVPQe8G8u0gOsVRwWt1T4K80NDvZPMh1q1HDJog"/>
+<span class="text-xs text-on-surface-variant">Marcus V.</span>
+</div>
+</div>
+<div class="bg-primary/5 px-4 py-2 rounded-xl text-center">
+<div class="text-xl font-black text-primary">98</div>
+<div class="text-[8px] font-bold text-primary uppercase">Score</div>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl flex gap-5 items-center hover:scale-[1.02] transition-all">
+<div class="w-20 h-20 rounded-xl overflow-hidden shadow-sm">
+<img alt="Croatia" class="w-full h-full object-cover" data-alt="Croatia coast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3t_m7iCVBq938Y_k9F1x2AisTq9vvGOyOtJLnh1jc3IDmiSgnPZKWI7M8LFAlFSl274xHe981Q_pLrtjTwG8H2iwp9btozE_isu3nYtZAgGAhIo0f6K5o4Exd23tEWCoqviJOFT7nrMTPM5KddFDt4z7Eu8GH7XoE0x8IIXoQ_wcpzbHqzbe7XtQh8yR1xLLxN12k5vjxcL71d8_LCZye25FOUtKNvQEa9HV6jv9Xye79m0wKXajlvnvhVkRDqbFGkP_DM0JEAJE"/>
+</div>
+<div class="flex-grow">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-1 block">Relaxation</span>
+<h4 class="font-bold text-on-surface text-lg">Coastal hopping in Croatia</h4>
+<div class="flex items-center gap-2 mt-2">
+<img alt="Avatar" class="w-6 h-6 rounded-full object-cover" data-alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNnJORDYbP_pYJbXcR57pTzP_HjqskBz_cEq1CxoCy_GTY2v_uUOjaSMgwEZdfnrGbW8GKegbJFybEhKiz8mGtqRmrr0YEu7KcBRL5dOZjoM0Gk1ew1lYnoz1WnnpGncaPMs6Xr2B1vcEmUME4sdtyh1JfnsMnW6qHtnwMf2c-ouR4UBw6_XiGdvWY-6kSietO8zh8N1KW2xIKVtPmL4OzJHL_Ky_XaBnbu6sJ1enEjkgFcKMGRGB5YoZa0TZtroPCVpXj2saq1c0"/>
+<span class="text-xs text-on-surface-variant">Elena R.</span>
+</div>
+</div>
+<div class="bg-secondary/5 px-4 py-2 rounded-xl text-center">
+<div class="text-xl font-black text-secondary">94</div>
+<div class="text-[8px] font-bold text-secondary uppercase">Score</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/90 backdrop-blur-2xl border-t border-outline-variant/10 flex justify-around items-center px-4 pt-4 pb-8">
+<a class="flex flex-col items-center justify-center text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center" href="#">
+<div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center -mt-10 shadow-xl shadow-primary/40 border-4 border-white transition-transform active:scale-90">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="add">add</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1 text-on-surface-variant/40">Trip</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Ledger</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/40" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

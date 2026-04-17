@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=Crimson+Pro:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#f8f9fa",
+                    "outline": "#737785",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f3f4f5",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "outline-variant": "#c3c6d6",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#7a3000",
+                    "on-secondary-container": "#562000",
+                    "on-primary-container": "#ccd8ff",
+                    "on-primary-fixed": "#001847",
+                    "on-surface": "#191c1d",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed": "#ffdbcb",
+                    "on-background": "#191c1d",
+                    "on-secondary-fixed": "#341100",
+                    "surface-container": "#edeeef",
+                    "tertiary-container": "#6e25f6",
+                    "inverse-surface": "#2e3132",
+                    "surface": "#f8f9fa",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#0056d2",
+                    "secondary-container": "#fd6c00",
+                    "on-surface-variant": "#424654",
+                    "inverse-primary": "#b2c5ff",
+                    "secondary-fixed-dim": "#ffb692",
+                    "surface-bright": "#f8f9fa",
+                    "on-tertiary-fixed": "#22005d",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#e0d2ff",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#dae2ff",
+                    "primary": "#0040a1",
+                    "on-primary-fixed-variant": "#0040a1",
+                    "tertiary": "#5400cc",
+                    "surface-container-high": "#e7e8e9",
+                    "secondary": "#9f4200",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#cfbcff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary-fixed": "#e9ddff",
+                    "surface-tint": "#0056d2",
+                    "primary-fixed-dim": "#b2c5ff",
+                    "on-tertiary-fixed-variant": "#5400cc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "serif": ["Crimson Pro"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #191c1d; }
+        .magazine-dropcap::first-letter {
+            float: left;
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            margin-top: 0.2rem;
+            color: #0040a1;
+        }
+        .photo-offset {
+            transform: translateX(2rem);
+        }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary-container selection:text-white">
+<!-- Variant 1: Editorial Magazine Layout -->
+<div class="mb-20" id="variation-1">
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-outline-variant/10 flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-2">
+<span class="text-xl font-extrabold tracking-tighter text-primary">Tredit</span>
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-bold rounded uppercase tracking-wider">Draft</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-full shadow-lg shadow-primary/20">PUBLISH</button>
+</div>
+</nav>
+<main class="pt-24 px-0 max-w-2xl mx-auto overflow-hidden">
+<!-- Hero Magazine Header -->
+<header class="px-6 mb-12">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-8 h-px bg-outline-variant"></div>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Autumn Chronicles</span>
+</div>
+<h1 class="text-6xl font-serif italic font-semibold leading-none text-on-surface mb-6">Kyoto Autumn <br/>Echoes</h1>
+<div class="flex justify-between items-end border-t border-b border-outline-variant/20 py-4">
+<div class="text-xs font-medium uppercase tracking-widest">Oct 12 — 20</div>
+<div class="text-xs italic font-serif">A journey through Gion and Arashiyama</div>
+</div>
+</header>
+<!-- Day 01 Content -->
+<section class="space-y-16">
+<div class="relative px-6">
+<span class="absolute -left-2 top-0 text-[120px] font-bold text-surface-container-highest/50 -z-10 select-none">01</span>
+<div class="pt-12">
+<h2 class="text-3xl font-serif italic mb-6">The Soul of Gion</h2>
+<div class="magazine-dropcap text-on-surface-variant leading-relaxed text-lg mb-8">
+                            Arrival in Gion was like stepping into a woodblock print. The grilled binchotan skewers at Izakaya Kushi-Kura were incredible. The atmosphere in this converted merchant house felt like stepping back in time.
+                        </div>
+<!-- Offset Gallery Arrangement -->
+<div class="relative mb-12">
+<div class="w-4/5 ml-auto">
+<img alt="Interior" class="w-full h-80 object-cover rounded-sm shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSK5_QYhj53YFgNv4jmUP7WeDUwhD6KjzyJRQhQk-pgLS9qV9yRzkQop4q-vvLafoqTBlkncuzWlAKhNPLQu7n8o-MfJhW9X_3J5tvmFykDD0wwDACUcXGTRtZke0Am8yPa6tsAcJ0DiSJSmQqNH8TmSlV1ta6mmlhZvaOaaLfK-rHUrej7RNiBy49YApQmxB1PxoUXOiv1wQprD0RMuwSAGLjfRar4dsDkwrb0G-oFfKx5EE3MTrBX5ygnniO23zN38ZYk-VDvD4"/>
+</div>
+<div class="absolute -bottom-6 -left-4 w-1/2 p-2 bg-white shadow-xl rotate-[-2deg]">
+<p class="text-[10px] font-serif italic text-on-surface-variant">The local sake flight was a revelation for the palate.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Day 02 Content -->
+<div class="bg-primary-container/10 py-16 px-6">
+<div class="flex items-center gap-4 mb-8">
+<span class="text-4xl font-serif font-bold text-primary">02</span>
+<h2 class="text-2xl font-bold tracking-tight">Temple Trails &amp; Morning Mist</h2>
+</div>
+<!-- Split Gallery Layout -->
+<div class="grid grid-cols-12 gap-4 mb-6">
+<div class="col-span-8">
+<img alt="Kiyomizu" class="w-full h-64 object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQLwaSXPoQJpSTYWW5lT97ERQ7Hn47mLCyzYf7E__tZWoE3SjX2OPVGVrb9d6fK0jbuXoI4kSVqw3R99DhutHrDp1uxn1zA9gDhWpEJPL8j9v8eLFa9ceb-f1QpbtG0TZV3sH0keUdx3OxboLHC7ZTa3bQuP2yzwBa8fnw1zxmeG3ngN_8bwL3WFtXFLrIFqJmsX5Wf54dQeVNp5Jony9a9qJ5wnNMViEvibVQtNTyHgsvMFI7unA86J6LJXqQgfDeYZlxU0wNy-0"/>
+</div>
+<div class="col-span-4 flex flex-col gap-4">
+<div class="h-1/2 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant" data-icon="camera">camera</span>
+</div>
+<div class="h-1/2 bg-secondary-container/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="brush">brush</span>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed text-lg font-serif">
+                        Woke up at 5 AM to beat the crowds. The mist over the maple trees was purely ethereal. One of those moments where time just stops. Later, I found a handcrafted ceramic tea set on Sannenzaka Slope.
+                    </p>
+</div>
+</section>
+</main>
+</div>
+<!-- Variant 2: Minimal Floating Gallery Layout (Implicitly part of the flow) -->
+<div class="border-t-8 border-surface-container py-20 px-4" id="variation-2">
+<div class="max-w-md mx-auto">
+<div class="mb-12 text-center">
+<span class="text-xs font-bold text-primary tracking-widest uppercase mb-2 block">Variant 02: Minimal Journal</span>
+<h2 class="text-4xl font-bold">Quiet Moments</h2>
+</div>
+<div class="space-y-24">
+<!-- Entry -->
+<div class="relative group">
+<div class="flex justify-between items-center mb-6">
+<div class="text-[10px] font-black uppercase tracking-tighter bg-on-surface text-surface px-2 py-1">Day 01</div>
+<span class="text-[10px] text-on-surface-variant font-medium">10:45 PM</span>
+</div>
+<div class="aspect-[4/5] overflow-hidden rounded-3xl mb-6 shadow-2xl transition-transform group-hover:scale-[1.02]">
+<img alt="Food" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSK5_QYhj53YFgNv4jmUP7WeDUwhD6KjzyJRQhQk-pgLS9qV9yRzkQop4q-vvLafoqTBlkncuzWlAKhNPLQu7n8o-MfJhW9X_3J5tvmFykDD0wwDACUcXGTRtZke0Am8yPa6tsAcJ0DiSJSmQqNH8TmSlV1ta6mmlhZvaOaaLfK-rHUrej7RNiBy49YApQmxB1PxoUXOiv1wQprD0RMuwSAGLjfRar4dsDkwrb0G-oFfKx5EE3MTrBX5ygnniO23zN38ZYk-VDvD4"/>
+</div>
+<h3 class="text-2xl font-bold mb-3 px-2">Kushi-Kura Night</h3>
+<p class="text-on-surface-variant leading-relaxed px-2">The aroma of binchotan charcoal lingers. A perfect introduction to Kyoto's culinary heart.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Variant 3: Modern Grid / Bauhaus Style -->
+<div class="bg-on-surface text-surface py-20 px-6" id="variation-3">
+<div class="max-w-xl mx-auto">
+<div class="grid grid-cols-2 gap-4 mb-20">
+<div class="aspect-square bg-primary flex items-center justify-center p-8">
+<h2 class="text-5xl font-black leading-none tracking-tighter">03 <br/>GRID</h2>
+</div>
+<div class="aspect-square bg-secondary-container text-on-secondary-container p-6 flex flex-col justify-end">
+<p class="text-xs font-bold uppercase tracking-widest">Layout Style</p>
+<p class="text-2xl font-bold">Bauhaus Journal</p>
+</div>
+</div>
+<div class="space-y-1 bg-surface/10 p-1">
+<div class="grid grid-cols-3 gap-1 h-48">
+<div class="bg-surface/20"></div>
+<img alt="Kiyomizu" class="col-span-2 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQLwaSXPoQJpSTYWW5lT97ERQ7Hn47mLCyzYf7E__tZWoE3SjX2OPVGVrb9d6fK0jbuXoI4kSVqw3R99DhutHrDp1uxn1zA9gDhWpEJPL8j9v8eLFa9ceb-f1QpbtG0TZV3sH0keUdx3OxboLHC7ZTa3bQuP2yzwBa8fnw1zxmeG3ngN_8bwL3WFtXFLrIFqJmsX5Wf54dQeVNp5Jony9a9qJ5wnNMViEvibVQtNTyHgsvMFI7unA86J6LJXqQgfDeYZlxU0wNy-0"/>
+</div>
+<div class="bg-surface text-on-surface p-8">
+<h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Day Two: The Temple Trail</h3>
+<p class="text-sm leading-relaxed opacity-80">Sunrise at Kiyomizu-dera. The red of the maples is almost violent against the morning mist. A profound silence despite the early hour.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Unified Prominent CTA Section -->
+<div class="fixed bottom-0 left-0 w-full z-50 p-6 bg-gradient-to-t from-surface via-surface to-transparent">
+<div class="max-w-md mx-auto flex gap-3">
+<button class="flex-1 py-4 bg-surface border border-outline-variant rounded-2xl flex items-center justify-center gap-2 font-bold shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+                Share
+            </button>
+<button class="flex-[2] py-4 bg-primary text-white rounded-2xl flex items-center justify-center gap-3 font-bold shadow-2xl shadow-primary/40 active:scale-[0.98] transition-all group overflow-hidden relative">
+<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+<span class="material-symbols-outlined text-[24px]" data-icon="publish" style="font-variation-settings: 'FILL' 1;">publish</span>
+<span class="relative z-10">PUBLISH TO TREDIT</span>
+</button>
+</div>
+</div>
+<!-- Hidden Navigation (for structure preservation) -->
+<footer class="opacity-0 pointer-events-none fixed bottom-0">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</footer>
+</body></html>

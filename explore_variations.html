@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tredit - Explore the World</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f8f9fa",
+                        "outline": "#737785",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f4f5",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "outline-variant": "#c3c6d6",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#7a3000",
+                        "on-secondary-container": "#562000",
+                        "on-primary-container": "#ccd8ff",
+                        "on-primary-fixed": "#001847",
+                        "on-surface": "#191c1d",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#ffdbcb",
+                        "on-background": "#191c1d",
+                        "on-secondary-fixed": "#341100",
+                        "surface-container": "#edeeef",
+                        "tertiary-container": "#6e25f6",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#0056d2",
+                        "secondary-container": "#fd6c00",
+                        "on-surface-variant": "#424654",
+                        "inverse-primary": "#b2c5ff",
+                        "secondary-fixed-dim": "#ffb692",
+                        "surface-bright": "#f8f9fa",
+                        "on-tertiary-fixed": "#22005d",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#e0d2ff",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dae2ff",
+                        "primary": "#0040a1",
+                        "on-primary-fixed-variant": "#0040a1",
+                        "tertiary": "#5400cc",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary": "#9f4200",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#cfbcff",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-fixed": "#e9ddff",
+                        "surface-tint": "#0056d2",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-tertiary-fixed-variant": "#5400cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid { column-count: 3; }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Variation Selection (Internal Navigation for Demo) -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-[60] flex gap-1 p-1 bg-black/5 backdrop-blur-md rounded-full border border-white/20 shadow-lg">
+<button class="variant-btn px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-white shadow-sm text-primary" onclick="switchVariant(1)">Var 1</button>
+<button class="variant-btn px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full text-on-surface-variant" onclick="switchVariant(2)">Var 2</button>
+<button class="variant-btn px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full text-on-surface-variant" onclick="switchVariant(3)">Var 3</button>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl flex justify-between items-center px-6 h-16 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="travel_explore">travel_explore</span>
+<h1 class="text-xl font-extrabold tracking-tight text-on-surface font-headline">Tredit</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-primary object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7HeuMU_tq5M1wKqnVLGC5aevtiw0kG0WN-e8xVwrZKiBgGVPxmjK-aqZvY8ihUrQ8fO3wYVoBTCe4F5jbTJ0viALlIwWxr3SjQlYfdSsplTEelj3cWpRTz_SbPGtaSwohyYIkdqqYxV5Q_LPtOjBRyXCLoAcF8dtcRuDyy08SA5AMk0qdKjeTD6RXmRMXSQ-9YyT2HAJ7t026Y2bDoRYTemFbAW3dxRWKUbWU65Xjl1QoFilkgPZsa2Zr8FBbGkVrXznqyDt-j1s"/>
+</div>
+</header>
+<main class="pt-24 pb-32 max-w-7xl mx-auto">
+<!-- VARIATION 1: Integrated Search Header -->
+<section class="variant-section block px-6 space-y-8" id="variant-1">
+<div class="space-y-6">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-extrabold font-headline tracking-tight">Explore Journeys</h2>
+<p class="text-on-surface-variant text-sm font-medium">Find your next adventure through others' eyes.</p>
+</div>
+<div class="flex items-center gap-2 bg-white rounded-2xl p-2 shadow-sm border border-outline-variant/30">
+<div class="flex-1 flex items-center gap-3 pl-4">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-sm font-medium placeholder:text-outline" placeholder="Search destinations..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2.5 rounded-xl font-bold text-xs">Search</button>
+</div>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar -mx-6 px-6">
+<button class="bg-secondary text-on-secondary px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap shadow-md shadow-secondary/20">Popular</button>
+<button class="bg-white border border-outline-variant/30 px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap">Nature</button>
+<button class="bg-white border border-outline-variant/30 px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap">Culinary</button>
+<button class="bg-white border border-outline-variant/30 px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap">Luxury</button>
+<button class="bg-white border border-outline-variant/30 px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap">Budget</button>
+</div>
+</div>
+<div class="masonry-grid">
+<!-- Item 1 -->
+<div class="masonry-item bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10 group">
+<div class="relative">
+<img alt="Patagonia" class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6JNeDTsLKMFh8Xpwim8hyVoqfMB2cA2e0TQ3bwpbV45_vIWUz-PgJJBKNGEWS0S5PZ3dWbSf3oB1g18nBGP2Heur9DKUl2pAP0M5Ya4nXYZ7u7vta1AmiPkMbau6oNzM0gJtZES7dioO1dJKQ5mRoniyP6OHZjoN9514YPgWaPvMJZCJZMHrTT77E1JjGSauAMjIcsnKJjEM0X0dSpQq4i-KLFbEm1SqD6B1-FJ0iNx2yZDwjHoCQQp0cMT0i574vq7EPV0-R5-Q"/>
+<div class="absolute top-3 left-3 bg-black/30 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">Nature</div>
+</div>
+<div class="p-4 space-y-3">
+<h4 class="font-bold text-sm leading-tight">The Patagonia Circuit: A Raw Wilderness Diary</h4>
+<div class="flex items-center gap-2">
+<img alt="" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxxdT0okJ_LB9OX9zG7X9ZJ77BTG4jqN10pQtsEnhJvlGcDcTm64-nWHJQ8wApmDXFEvb7zwu52J7r8A_FXc-yKAfp0SxM-t0lp6aDBkvSHWosmOHJ6iIz4EWQtyvmXbCkglkfrCPes31rrpkuI2jaC73Gi-98DrgY1McjgM9zE7Ym4KTuwIzrNNer_-G0K394YkMx-9SNYLRTGO-RxsIvMqocECvKan_wDvOrYNvTSJBL11O763MBvvhbDgO7Z487kWmUtl2AHno"/>
+<span class="text-[10px] font-medium text-on-surface-variant">Isabella Scott</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="masonry-item bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10 group">
+<div class="relative">
+<img alt="Kyoto" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpP0-P5vxsZdzLt4YRXetNKxGgP1qhqjWzS7VmVQqgOhaV3csY5vi4y6BgYPps0m3-ZpDt-4BEYZGSTz2eg4vxFHzRodrbmhEOyrlgmnP-seJ3NzXk84CSzyUYIWr0CA_nuChUvx1puJjz6sDSwmwQawOEpP-qoMNZdq73VnqVd5LHygWf274eAZixfeNA_j4_1LzC5nIYJAdAbeYug1kLKc6uAmEywPlySshfuogOqsT5XQicHGKDChowFCgGrJLLkK_TmImrxH8"/>
+<div class="absolute top-3 left-3 bg-black/30 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">Food</div>
+</div>
+<div class="p-4 space-y-3">
+<h4 class="font-bold text-sm leading-tight">Kyoto Hidden Gems: A Chef's Private Tour</h4>
+<div class="flex items-center gap-2">
+<img alt="" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgzKZN-JO4xT7oQHpMrIDUzYUxW0NULlIgkIpNojIa89NynMVcSKuzgs4ZAc40napQQraLfrVXhWS7TkmdHx5GLi3rilybHhaG26lAaCVyN2CYAW0IyME0SLIWuhZsmTh0VXb9grTC614qFRiVme6hX4JSDCIQWy5pkAofr2vIuF6Jpe5yTTrzBiQOYuO-j-jpl9hL2Uz5JG-N-E5ALN7rGEhDR8jXqTYTroMjnMytmZMooxusDxs9DARMadzKB8j8D51RqT1kvUc"/>
+<span class="text-[10px] font-medium text-on-surface-variant">Kenji Nakamura</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="masonry-item bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10 group">
+<div class="relative">
+<img alt="London" class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv08nyRrfanwxrk4qaCB9DXlphfJqz_7FuAjULxzJGPzQA90NWDgsrTCpjwM2evPkIm4Ha-IcRoAt2BKrvxM_GVcCLn4ckC_5iH9JhccFrRzrh1druZ6FfM7W3DlQTI-vvyCs4ThI5secDf4DdQUBMfZgqviUTmWdYPwha8qmXtVeMqf_bEQafjt30DHyJuInYSB-dp9rllGeXEtwZdrEGmyXdLxtD95-om1UE1JCM0eEWl67lBLdBbEfMFGDN4z1zdFCx-xi29YA"/>
+<div class="absolute top-3 left-3 bg-black/30 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-white font-bold uppercase tracking-wider">Culture</div>
+</div>
+<div class="p-4 space-y-3">
+<h4 class="font-bold text-sm leading-tight">London After Dark: Jazz &amp; History</h4>
+<div class="flex items-center gap-2">
+<img alt="" class="w-5 h-5 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRPRgSbJHQ6FgvV46aKNJk5Ou-wU4XwVUKrj-shS1ntw3gC9KvukuapDjXc811jmbEEv_TOfvXojc1Gt0M1-5JD9-pdZzf8mM-WiM7tqvhbWIm_HGYcp5F6uutEjBICwnV5VlPKLxLTFIUJEGjaHEzqj8zF7r8J-Q3jqfG20y6FvjZoEJy1qmnyBDWbQZxsgjIndET3pVRrYVXp9L0YSzEGKR8y3E-skR9pETwPCVKbH-rwoNnQsYbyjEYdghAzlvJR7ED3wLfDVc"/>
+<span class="text-[10px] font-medium text-on-surface-variant">David Miller</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- VARIATION 2: Floating Search & Vertical Chips -->
+<section class="variant-section hidden px-6 space-y-8" id="variant-2">
+<div class="flex gap-4">
+<div class="w-16 flex flex-col gap-4 py-2 shrink-0">
+<button class="flex flex-col items-center justify-center aspect-square bg-primary rounded-2xl text-on-primary">
+<span class="material-symbols-outlined text-lg" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="text-[8px] font-bold uppercase">All</span>
+</button>
+<button class="flex flex-col items-center justify-center aspect-square bg-surface-container-high rounded-2xl text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="park">park</span>
+<span class="text-[8px] font-bold uppercase">Nature</span>
+</button>
+<button class="flex flex-col items-center justify-center aspect-square bg-surface-container-high rounded-2xl text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="restaurant">restaurant</span>
+<span class="text-[8px] font-bold uppercase">Food</span>
+</button>
+<button class="flex flex-col items-center justify-center aspect-square bg-surface-container-high rounded-2xl text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="local_activity">local_activity</span>
+<span class="text-[8px] font-bold uppercase">City</span>
+</button>
+</div>
+<div class="flex-1 space-y-6">
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant/20 py-4 pl-12 pr-4 rounded-2xl text-sm font-medium focus:ring-0" placeholder="Search" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+</div>
+<div class="masonry-grid" style="column-count: 1;">
+<div class="masonry-item bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10">
+<img alt="" class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6JNeDTsLKMFh8Xpwim8hyVoqfMB2cA2e0TQ3bwpbV45_vIWUz-PgJJBKNGEWS0S5PZ3dWbSf3oB1g18nBGP2Heur9DKUl2pAP0M5Ya4nXYZ7u7vta1AmiPkMbau6oNzM0gJtZES7dioO1dJKQ5mRoniyP6OHZjoN9514YPgWaPvMJZCJZMHrTT77E1JjGSauAMjIcsnKJjEM0X0dSpQq4i-KLFbEm1SqD6B1-FJ0iNx2yZDwjHoCQQp0cMT0i574vq7EPV0-R5-Q"/>
+<div class="p-4">
+<h4 class="font-bold text-base mb-2">Patagonia Circuit</h4>
+<div class="flex justify-between items-center">
+<span class="text-[10px] px-2 py-0.5 bg-tertiary-container text-on-tertiary-container rounded-full font-bold">12 Days</span>
+<span class="material-symbols-outlined text-primary" data-icon="bookmark">bookmark</span>
+</div>
+</div>
+</div>
+<div class="masonry-item bg-white rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10">
+<img alt="" class="w-full h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpP0-P5vxsZdzLt4YRXetNKxGgP1qhqjWzS7VmVQqgOhaV3csY5vi4y6BgYPps0m3-ZpDt-4BEYZGSTz2eg4vxFHzRodrbmhEOyrlgmnP-seJ3NzXk84CSzyUYIWr0CA_nuChUvx1puJjz6sDSwmwQawOEpP-qoMNZdq73VnqVd5LHygWf274eAZixfeNA_j4_1LzC5nIYJAdAbeYug1kLKc6uAmEywPlySshfuogOqsT5XQicHGKDChowFCgGrJLLkK_TmImrxH8"/>
+<div class="p-4">
+<h4 class="font-bold text-base mb-2">Kyoto Hidden Gems</h4>
+<div class="flex justify-between items-center">
+<span class="text-[10px] px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded-full font-bold">5 Days</span>
+<span class="material-symbols-outlined text-primary" data-icon="bookmark">bookmark</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- VARIATION 3: Hero-Centric Filter Cards -->
+<section class="variant-section hidden px-6 space-y-8" id="variant-3">
+<div class="bg-primary/5 rounded-[2.5rem] p-8 space-y-6 border border-primary/10">
+<h2 class="text-4xl font-extrabold font-headline leading-tight">Where to <span class="text-primary italic">next?</span></h2>
+<div class="relative">
+<input class="w-full bg-white border-none py-5 pl-14 pr-6 rounded-full shadow-xl shadow-primary/5 text-sm font-medium" placeholder="Paris, Hiking, Foodie..." type="text"/>
+<span class="material-symbols-outlined absolute left-6 top-1/2 -translate-y-1/2 text-primary" data-icon="search">search</span>
+</div>
+<div class="flex gap-4">
+<div class="flex-1 bg-white p-4 rounded-3xl flex flex-col items-center gap-2 shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary" data-icon="explore">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Surprise Me</span>
+</div>
+<div class="flex-1 bg-white p-4 rounded-3xl flex flex-col items-center gap-2 shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-tertiary" data-icon="trending_up">trending_up</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Trending</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold font-headline">Latest Curations</h3>
+<button class="text-xs font-bold text-primary flex items-center gap-1">Filter <span class="material-symbols-outlined text-sm" data-icon="tune">tune</span></button>
+</div>
+<div class="masonry-grid">
+<div class="masonry-item relative group rounded-3xl overflow-hidden shadow-lg shadow-black/5">
+<img alt="" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6JNeDTsLKMFh8Xpwim8hyVoqfMB2cA2e0TQ3bwpbV45_vIWUz-PgJJBKNGEWS0S5PZ3dWbSf3oB1g18nBGP2Heur9DKUl2pAP0M5Ya4nXYZ7u7vta1AmiPkMbau6oNzM0gJtZES7dioO1dJKQ5mRoniyP6OHZjoN9514YPgWaPvMJZCJZMHrTT77E1JjGSauAMjIcsnKJjEM0X0dSpQq4i-KLFbEm1SqD6B1-FJ0iNx2yZDwjHoCQQp0cMT0i574vq7EPV0-R5-Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end">
+<p class="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">Patagonia</p>
+<h4 class="text-white font-bold text-sm leading-tight">12-Day Wilderness Diary</h4>
+</div>
+</div>
+<div class="masonry-item relative group rounded-3xl overflow-hidden shadow-lg shadow-black/5">
+<img alt="" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv08nyRrfanwxrk4qaCB9DXlphfJqz_7FuAjULxzJGPzQA90NWDgsrTCpjwM2evPkIm4Ha-IcRoAt2BKrvxM_GVcCLn4ckC_5iH9JhccFrRzrh1druZ6FfM7W3DlQTI-vvyCs4ThI5secDf4DdQUBMfZgqviUTmWdYPwha8qmXtVeMqf_bEQafjt30DHyJuInYSB-dp9rllGeXEtwZdrEGmyXdLxtD95-om1UE1JCM0eEWl67lBLdBbEfMFGDN4z1zdFCx-xi29YA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end">
+<p class="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">London</p>
+<h4 class="text-white font-bold text-sm leading-tight">Jazz, Gin &amp; History</h4>
+</div>
+</div>
+<div class="masonry-item relative group rounded-3xl overflow-hidden shadow-lg shadow-black/5">
+<img alt="" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpP0-P5vxsZdzLt4YRXetNKxGgP1qhqjWzS7VmVQqgOhaV3csY5vi4y6BgYPps0m3-ZpDt-4BEYZGSTz2eg4vxFHzRodrbmhEOyrlgmnP-seJ3NzXk84CSzyUYIWr0CA_nuChUvx1puJjz6sDSwmwQawOEpP-qoMNZdq73VnqVd5LHygWf274eAZixfeNA_j4_1LzC5nIYJAdAbeYug1kLKc6uAmEywPlySshfuogOqsT5XQicHGKDChowFCgGrJLLkK_TmImrxH8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 flex flex-col justify-end">
+<p class="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">Kyoto</p>
+<h4 class="text-white font-bold text-sm leading-tight">Chef's Private Food Tour</h4>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-3 pb-6 bg-white/80 backdrop-blur-xl z-50 rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] border-t border-surface-container">
+<div class="flex flex-col items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-bold font-inter uppercase tracking-widest mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-[10px] font-bold font-inter uppercase tracking-widest mt-1">Explore</span>
+</div>
+<div class="relative -mt-12 bg-primary rounded-full p-4 shadow-xl shadow-primary/30 active:scale-95 duration-200">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="add">add</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-[10px] font-bold font-inter uppercase tracking-widest mt-1">Ledger</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold font-inter uppercase tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+<script>
+    function switchVariant(v) {
+        document.querySelectorAll('.variant-section').forEach(s => s.classList.add('hidden'));
+        document.getElementById('variant-' + v).classList.remove('hidden');
+        
+        document.querySelectorAll('.variant-btn').forEach((b, i) => {
+            if (i === v - 1) {
+                b.classList.add('bg-white', 'shadow-sm', 'text-primary');
+                b.classList.remove('text-on-surface-variant');
+            } else {
+                b.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+                b.classList.add('text-on-surface-variant');
+            }
+        });
+    }
+</script>
+</body></html>

@@ -1,0 +1,163 @@
+.dest {
+  padding-bottom: 100px;
+}
+
+.dest__not-found {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* ── Hero ── */
+.dest__hero {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.dest__hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dest__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 50%);
+}
+
+.dest__back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  color: #fff;
+}
+
+.dest__hero-info {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+}
+
+.dest__hero-name {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.dest__hero-region {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+}
+
+.dest__hero-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* ── Sections ── */
+.dest__section {
+  padding: 24px;
+}
+
+.dest__section h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.dest__trips {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dest__trip-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dest__trip-row > a {
+  flex: 1;
+}
+
+.dest__import-btn {
+  padding: 10px 20px;
+  background: var(--color-primary-fixed);
+  color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  flex-shrink: 0;
+  transition: all var(--transition-smooth);
+}
+
+.dest__import-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.dest__empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-on-surface-variant);
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--radius-lg);
+}
+
+.dest__pins-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Ethical ── */
+.dest__ethical-section {
+  background: var(--color-surface-container-low);
+  margin: 0 0 0;
+}
+
+.dest__ethical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dest__ethical-card {
+  padding: 16px;
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-secondary);
+}
+
+.dest__ethical-advice {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.dest__ethical-source {
+  font-size: 0.6875rem;
+  color: var(--color-on-surface-variant);
+  font-style: italic;
+}
