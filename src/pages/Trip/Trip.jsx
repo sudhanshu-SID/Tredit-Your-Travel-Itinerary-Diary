@@ -4,8 +4,8 @@ import Icon from '../../components/icons/Icon';
 export default function Trip() {
   return (
     <div className="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-white min-h-[100dvh]">
-      {/* Variant 1: Editorial Magazine Layout */}
-      <div className="mb-20" id="variation-1">
+      {/* Editorial Magazine Layout */}
+      <div className="mb-20">
         <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-outline-variant/10 flex justify-between items-center px-6 h-16">
           <div className="flex items-center gap-2">
             <span className="text-xl font-extrabold tracking-tighter text-primary">Tredit</span>

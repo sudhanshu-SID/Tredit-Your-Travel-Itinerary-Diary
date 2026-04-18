@@ -4,7 +4,7 @@ import Icon from '../../components/icons/Icon';
 export default function Onboarding() {
   return (
     <div className="h-screen w-full overflow-y-auto scroll-snap-type-y snap-y snap-mandatory bg-background text-on-surface antialiased">
-      {/* VARIATION 1: FULL SCREEN IMMERSIVE (Snap Section 1) */}
+      {/* FULL SCREEN IMMERSIVE (Snap Section 1) */}
       <section className="relative h-screen w-full flex flex-col justify-end p-8 overflow-hidden snap-start">
         <div className="absolute inset-0 z-0">
           <img 
@@ -36,7 +36,7 @@ export default function Onboarding() {
         </div>
       </section>
 
-      {/* VARIATION 2: BENTO VALUE PROPS (Snap Section 2) */}
+      {/* BENTO VALUE PROPS (Snap Section 2) */}
       <section className="h-screen w-full bg-surface p-6 flex flex-col justify-center gap-4 snap-start">
         <div className="space-y-2 mb-4">
           <span className="text-primary font-bold text-xs uppercase tracking-widest">Why Tredit?</span>
@@ -66,7 +66,7 @@ export default function Onboarding() {
         </div>
       </section>
 
-      {/* VARIATION 3: MINIMAL LOGIN (Snap Section 3) */}
+      {/* MINIMAL LOGIN (Snap Section 3) */}
       <section className="h-screen w-full bg-white flex flex-col items-center justify-center p-8 snap-start relative">
         {/* Floating Illustration element */}
         <div className="absolute top-12 -right-4 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>

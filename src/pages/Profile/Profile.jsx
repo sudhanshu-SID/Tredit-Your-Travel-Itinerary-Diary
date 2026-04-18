@@ -27,7 +27,7 @@ export default function Profile() {
       </header>
 
       <main className="max-w-4xl mx-auto px-5 pt-4">
-        {/* VARIATION 1: Integrated Stats Header */}
+        {/* Integrated Stats Header */}
         <section className="mb-10">
           <div className="flex flex-col items-center">
             <div className="relative mb-6">
@@ -64,7 +64,7 @@ export default function Profile() {
           </div>
         </section>
 
-        {/* VARIATION 2: Grid-Based Content View */}
+        {/* Grid-Based Content View */}
         <section className="mb-10">
           <div className="flex gap-6 border-b border-outline-variant/20 mb-6 overflow-x-auto hide-scrollbar">
             <button className="pb-3 text-sm font-bold border-b-2 border-primary text-primary">Published</button>
@@ -106,7 +106,7 @@ export default function Profile() {
           </div>
         </section>
 
-        {/* VARIATION 3: Integrated Privacy Settings */}
+        {/* Integrated Privacy Settings */}
         <section className="bg-surface-container-low/50 backdrop-blur-sm rounded-3xl p-6 border border-outline-variant/10 mb-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-extrabold flex items-center gap-2">

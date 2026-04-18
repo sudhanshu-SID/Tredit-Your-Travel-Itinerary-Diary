@@ -17,7 +17,7 @@ export default function HomePage() {
       </header>
 
       <main className="pb-32">
-        {/* Variation 1: Immersive Full-Bleed Hero */}
+        {/* Immersive Full-Bleed Hero */}
         <section className="relative h-[90vh] flex flex-col justify-end overflow-hidden">
           <div className="absolute inset-0 -z-10">
             <img 
@@ -46,7 +46,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Variation 2: Grid-Based Destinations */}
+        {/* Grid-Based Destinations */}
         <section className="px-6 py-12 max-w-6xl mx-auto">
           <div className="flex justify-between items-end mb-8">
             <div>
@@ -94,7 +94,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Variation 3: Structured Modern Recent Activity */}
+        {/* Structured Modern Recent Activity */}
         <section className="px-6 mb-20 max-w-6xl mx-auto">
           <div className="bg-surface-container rounded-[2.5rem] p-8">
             <div className="flex items-center justify-between mb-8">

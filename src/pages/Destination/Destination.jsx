@@ -19,7 +19,7 @@ export default function Destination() {
 
       {/* Main Content */}
       <main className="pb-32 pt-16">
-        {/* Variation 1: The Immersive Header & Tabbed Interface */}
+        {/* The Immersive Header & Tabbed Interface */}
         <div className="relative w-full h-[300px]">
           <img alt="Manali" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7mo9muiBs-0Jv21amAYCLyxj_Imsa-CfZq3fHvEkoY6QSdx0TZLYgOhYVeMlkKxnr-78eVNnjMOyJ8lsYHxS12mQfxHNBHc54zyi9nuR37oYHa95vOTHKGR4t0QnxNZOYjP6JijNP2GqMcZImymmp9lsam5YOWRmg6euE9Z2moUGyakSNozwuabKG4RxBAHXBSHCxsbsgW09n8gm-8-DP9o_ayYVju5VM40Qhc9cMGrSf_c_6J-SvH5tBgztCL5rWOlxa2vQi_aU" />
           <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-black/20"></div>
