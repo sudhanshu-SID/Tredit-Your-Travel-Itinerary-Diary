@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import BottomNav from './components/BottomNav'
+import BottomNav from './components/layout/BottomNav'
 import HomePage from './pages/Home/HomePage'
 import Onboarding from './pages/Onboarding/Onboarding'
 import TripMode from './pages/TripDetail/TripDetail'

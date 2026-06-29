@@ -1,102 +1,137 @@
-import React from 'react';
-import Icon from '../../components/icons/Icon';
+import React, { useEffect, useState, useRef } from 'react';
+import { Bell, ChevronRight, Activity, TrendingUp, Compass, Award } from 'lucide-react';
+import { useStore } from '../../store/useStore';
+import gsap from 'gsap';
 
 export default function Ledger() {
+  const { user, getPastTrips, getFutureTrips } = useStore();
+  const [activeTab, setActiveTab] = useState('past');
+  
+  const headerRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  const pastTrips = getPastTrips();
+  const futureTrips = getFutureTrips();
+  
+  let displayTrips = activeTab === 'past' ? pastTrips : futureTrips;
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.fromTo(headerRef.current,
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
+    );
+    tl.fromTo('.stagger-card',
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
+      "-=0.4"
+    );
+  }, [activeTab]);
+
   return (
-    <div className="bg-background text-on-background font-body min-h-[100dvh] selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <div className="bg-surface text-on-surface font-body min-h-[100dvh] pb-32">
+      {/* Background Gradient */}
+      <div className="fixed top-0 left-0 w-full h-96 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none -z-10"></div>
+
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-outline-variant/10 px-6 h-16 flex justify-between items-center">
+      <header className="sticky top-0 w-full z-50 bg-white/70 backdrop-blur-2xl border-b border-outline-variant/10 px-6 h-20 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <Icon name="travel_explore" className="text-primary" />
-          <h1 className="text-2xl font-extrabold tracking-tighter text-on-surface">Tredit</h1>
+          <div className="bg-gradient-primary p-2 rounded-xl text-white shadow-lg shadow-primary/30">
+            <TrendingUp size={20} strokeWidth={2.5} />
+          </div>
+          <h1 className="text-2xl font-extrabold tracking-tighter text-on-surface">Ledger.</h1>
         </div>
-        <button className="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-low transition-colors hover:bg-surface-container-high">
-          <Icon name="notifications" className="text-on-surface-variant text-xl" />
+        <button className="w-12 h-12 flex items-center justify-center rounded-full bg-white border border-outline-variant/20 shadow-sm transition-all hover:bg-surface-container active:scale-95">
+          <Bell size={20} className="text-on-surface-variant" />
         </button>
       </header>
 
-      <main className="pt-24 pb-32 space-y-16">
-        {/* VARIANT 1: STATS-CENTRIC & SEGMENTED CONTROL */}
-        <section className="px-6 max-w-4xl mx-auto" id="v1">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-1 block">Overview</span>
-              <h2 className="text-3xl font-extrabold font-headline">My Ledger</h2>
+      <main className="pt-8 pb-32 space-y-12 max-w-2xl mx-auto px-6">
+        {/* Header Section */}
+        <section ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-2 block bg-primary/10 w-fit px-3 py-1 rounded-full">Impact Overview</span>
+            <h2 className="text-4xl font-extrabold font-headline tracking-tight">Trip History</h2>
+          </div>
+          
+          <div className="p-1.5 bg-surface-container-low border border-outline-variant/20 rounded-full flex gap-1 shadow-inner w-fit">
+            <button 
+              onClick={() => setActiveTab('past')}
+              className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${activeTab === 'past' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}
+            >
+              Past
+            </button>
+            <button 
+              onClick={() => setActiveTab('future')}
+              className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${activeTab === 'future' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}
+            >
+              Future
+            </button>
+          </div>
+        </section>
+
+        {/* Global Impact Card */}
+        <section className="stagger-card">
+          <div className="bg-gradient-to-br from-primary to-primary-container text-white rounded-[2.5rem] p-8 shadow-xl shadow-primary/20 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-6 opacity-20 transform translate-x-4 -translate-y-4">
+              <Award size={120} strokeWidth={1} />
             </div>
-            <div className="p-1 bg-surface-container-high rounded-full flex gap-1">
-              <button className="px-5 py-1.5 bg-white shadow-sm rounded-full text-xs font-bold text-on-surface">Past</button>
-              <button className="px-5 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant hover:text-on-surface">Future</button>
-              <button className="px-5 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant hover:text-on-surface">Drafts</button>
+            
+            <div className="relative z-10">
+              <p className="text-white/80 text-sm font-bold uppercase tracking-widest mb-1">Lifetime Tredit Score</p>
+              <h3 className="text-6xl font-black mb-6">{user.treditScore}</h3>
+              
+              <div className="grid grid-cols-2 gap-4 border-t border-white/20 pt-6">
+                <div>
+                  <p className="text-white/70 text-xs font-semibold uppercase tracking-wider mb-1">Total Trips</p>
+                  <p className="text-2xl font-bold">{pastTrips.length}</p>
+                </div>
+                <div>
+                  <p className="text-white/70 text-xs font-semibold uppercase tracking-wider mb-1">Rank</p>
+                  <p className="text-2xl font-bold">Nomad</p>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Enhanced Ongoing Card with Mini Stats */}
-          <div className="bg-surface-container-lowest rounded-[2.5rem] p-6 shadow-xl shadow-surface-tint/5 border border-outline-variant/10 mb-10 overflow-hidden relative">
-            <div className="flex flex-col gap-6">
-              <div className="flex justify-between items-start">
-                <div className="flex gap-4">
-                  <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg ring-2 ring-white">
-                    <img alt="Tokyo" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDARBV7ha0l0PS4xuQXejE_-xU1FSXowuT6BYMmGsvnuRzNfnLygw9H_IaC8OoLSqrgcOQ7vPoeKWTsS2w2EWTlMJQTzKzdmVV0Sh84IOl9Aw8lO7pvvBuptyrRZkAvoovvTjJbLVsMDBwrSLcLCXRGhPQAUXLVy-1lvpzJcr_JtK8riIY9dxg_bVxBeglkYO3DWfeoJW9K8WWamTyWcvg-8ZNO-eHVYF9iLdGZz7wyjANI-_9WF8dmUazLu0EthSNQbUBdaK8PD58" />
+        {/* List Section */}
+        <section className="space-y-4">
+          <h3 className="text-lg font-bold font-headline mb-6 flex items-center gap-2">
+            <Activity size={20} className="text-primary" />
+            {activeTab === 'past' ? 'Completed Journeys' : 'Upcoming Plans'}
+          </h3>
+          
+          {displayTrips.length > 0 ? (
+            <div className="space-y-4">
+              {displayTrips.map((trip, idx) => (
+                <div key={trip.id} className="stagger-card group bg-white p-4 rounded-[2rem] flex items-center gap-5 hover:shadow-ambient transition-all border border-outline-variant/10 cursor-pointer hover:border-primary/20 hover:-translate-y-1">
+                  <div className="w-20 h-20 shrink-0 rounded-2xl overflow-hidden bg-surface-container relative">
+                    <img alt={trip.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src={trip.coverImage} />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold font-headline">Tokyo: Neon Days</h3>
-                    <p className="text-sm text-on-surface-variant">Ongoing • Day 4 of 12</p>
+                  
+                  <div className="flex-grow min-w-0">
+                    <h4 className="font-bold text-base text-on-surface truncate pr-4">{trip.title}</h4>
+                    <p className="text-xs font-medium text-on-surface-variant mt-1 flex items-center gap-1.5">
+                      <Compass size={12} className="text-primary" />
+                      {trip.durationDays} Days • {trip.stops} Stops
+                    </p>
+                  </div>
+                  
+                  <div className="text-right shrink-0 px-2 flex flex-col justify-center items-end border-l border-outline-variant/20 pl-4">
+                    <p className="text-xl font-black text-primary">+{trip.scoreReward}</p>
+                    <p className="text-[9px] font-bold text-on-surface-variant uppercase tracking-widest mt-0.5">Score</p>
                   </div>
                 </div>
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Live</div>
-              </div>
-
-              <div className="grid grid-cols-3 gap-4 py-6 border-y border-outline-variant/20">
-                <div className="text-center">
-                  <p className="text-[10px] font-bold text-outline uppercase tracking-widest mb-1">Score</p>
-                  <p className="text-lg font-extrabold text-primary">+450</p>
-                </div>
-                <div className="text-center border-x border-outline-variant/20">
-                  <p className="text-[10px] font-bold text-outline uppercase tracking-widest mb-1">Steps</p>
-                  <p className="text-lg font-extrabold">12.4k</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-[10px] font-bold text-outline uppercase tracking-widest mb-1">Stops</p>
-                  <p className="text-lg font-extrabold">3/8</p>
-                </div>
-              </div>
-
-              <button className="w-full bg-primary text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
-                <span>Open Dashboard</span>
-                <Icon name="arrow_forward" className="text-sm" />
-              </button>
+              ))}
             </div>
-          </div>
-
-          {/* Visual Vertical List */}
-          <div className="space-y-4">
-            <div className="group bg-white p-4 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow border border-outline-variant/5 cursor-pointer">
-              <div className="w-14 h-14 rounded-xl overflow-hidden bg-surface-container">
-                <img alt="Maldives" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7r4_lL3bVDEuDMUSIVTJPWlVIxAg3JgWQZ1EB1ZoBJWBKqf08OUT5sClNM4NEoZHwrsLpmtXs2_nAIoXuilPzsZA0VMaoFddEKNEAHcTAtaFOf8q849zR_-lDNVbKwYzl0fQ8I610uO61EyklCAYKPQRgusqozFrHU7SUdIf2B7oxnB1D7E7dXMhR3xhCt_5ExdbPnxpvs_2t7YMLuXeaS1IrSSN0QX0J2Cfwihs7PyFv1CBIi4IH288jZVFs4EZnQJw_mnVSGYE" />
-              </div>
-              <div className="flex-grow">
-                <h4 className="font-bold">Maldives Serenity</h4>
-                <p className="text-xs text-on-surface-variant">June 2023 • 8 days</p>
-              </div>
-              <div className="text-right">
-                <p className="text-lg font-black text-on-surface">+1,240</p>
-                <p className="text-[8px] font-bold text-tertiary uppercase tracking-tighter">Points Earned</p>
-              </div>
+          ) : (
+            <div className="text-center py-16 bg-white rounded-[2rem] border border-dashed border-outline-variant/30 stagger-card">
+              <Compass size={48} className="mx-auto text-outline-variant/50 mb-4" />
+              <p className="text-on-surface-variant font-medium">No {activeTab} trips found.</p>
             </div>
-            <div className="group bg-white p-4 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow border border-outline-variant/5 cursor-pointer">
-              <div className="w-14 h-14 rounded-xl overflow-hidden bg-surface-container">
-                <img alt="London" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAALqOCEE-uAMbS5PCLJnEFahUnRX17yaoOg1wytmH7TLbns7lFhSYlofEOqQnjHYEqVEVV72FZUeL9NYo2cdyXpu-a-nva-XVBI_OBQJ_wDhp66qV-OTDHT5AaVKNrTFuBe66aY-ww9tBUqt949E2J4oGrCYaeirfjzGU1EfYzycMrgz0zfQO9B7AuhHCAZo-z0v0yI3ZKtkZkcUUbxydi_0YPKfiBihIdNev6ngUsSWtPVXQCCaH7SC3bMOk6xjb5TKFs2KfnnyU" />
-              </div>
-              <div className="flex-grow">
-                <h4 className="font-bold">London Cultural</h4>
-                <p className="text-xs text-on-surface-variant">March 2023 • 7 days</p>
-              </div>
-              <div className="text-right">
-                <p className="text-lg font-black text-on-surface">+890</p>
-                <p className="text-[8px] font-bold text-tertiary uppercase tracking-tighter">Points Earned</p>
-              </div>
-            </div>
-          </div>
+          )}
         </section>
       </main>
     </div>

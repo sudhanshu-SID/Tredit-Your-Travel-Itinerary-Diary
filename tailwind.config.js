@@ -1,3 +1,6 @@
+import forms from '@tailwindcss/forms'
+import containerQueries from '@tailwindcss/container-queries'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -28,9 +31,9 @@ export default {
         "on-primary": "#ffffff",
         "on-secondary": "#ffffff",
         "on-tertiary": "#ffffff",
-        outline: "#737785",
+        "outline": "#737785",
         "outline-variant": "#c3c6d6",
-        error: "#ba1a1a",
+        "error": "#ba1a1a",
         "on-error-container": "#93000a", // from the HTML snippet shown earlier
       },
       fontFamily: {
@@ -56,7 +59,7 @@ export default {
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/container-queries')
+    forms,
+    containerQueries
   ],
 }
