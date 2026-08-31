@@ -1,16 +1,70 @@
-# React + Vite
+# Tredit - Your Travel Itinerary Diary
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tredit is a comprehensive travel tracking and itinerary planning application designed to document your journeys seamlessly. It features a modern frontend built with React and Vite, paired with a scalable Express.js and PostgreSQL backend.
 
-Currently, two official plugins are available:
+## 🏗️ Project Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project uses a modular **monorepo** structure, cleanly separating the frontend presentation layer from the backend business logic and database management.
 
-## React Compiler
+```
+Tredit/
+├── frontend/             # React + Vite application
+│   ├── src/              # UI components, pages, store, and styles
+│   └── public/           # Static frontend assets
+├── backend/              # Express.js + PostgreSQL application
+│   └── src/
+│       ├── controllers/  # Request handlers and business logic
+│       ├── routes/       # API endpoints definitions
+│       ├── models/       # Database models and relations
+│       └── db/           # Database connections and scripts
+└── docs/                 # Project documentation and legacy UI prototypes
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [PostgreSQL](https://www.postgresql.org/) (For backend data storage)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Running the Frontend
+The frontend is a React application powered by Vite.
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+### Running the Backend
+The backend is an Express server preparing for PostgreSQL integration.
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server (uses nodemon):
+   ```bash
+   npm run dev
+   ```
+
+## 📚 Documentation
+For detailed architecture decisions, component roles, and database planning, please refer to the `docs/` directory.
+
+- [Technical Architecture](docs/architecture.md)
+- [Project Overview](docs/PROJECT_MEMORY.md)
+- [Legacy UI Prototypes](docs/prototypes/)
+
+## 🎨 Tech Stack
+**Frontend:** React, Vite, Tailwind CSS, Zustand, GSAP, React Leaflet  
+**Backend:** Node.js, Express.js, PostgreSQL (Upcoming)
